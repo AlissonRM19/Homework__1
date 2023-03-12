@@ -2,6 +2,7 @@
 #define HOMEWORK__1_NODE_H
 
 #include<iostream>
+#include "Collector.h"
 
 /*
  * Este header contiene la clase Node, el constructor de la misma, ademas declara los metodos de
@@ -24,6 +25,12 @@ public:
     void setData(int data);
     Node *getNext() const;
     void setNext(Node* next);
+
+    void * operator new (size_t size, int data);
+
+    void operator delete (void * viejoNodo);
+
+
 
 };
 

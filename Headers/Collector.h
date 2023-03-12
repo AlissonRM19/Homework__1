@@ -2,14 +2,21 @@
 #define HOMEWORK__1_COLLECTOR_H
 
 
-#include "Node.h"
-#include "List.h"
 
-class Collector : public List {
+class Collector{
+
+private:
+    void * first;
+    static Collector * instance;
+    Collector() = default;
 
 public:
-    void addNode(Node* nd, int data) override;
-    void deleteNode(Node* nd, int data) override;
+    static Collector * getinstance();
+    bool Empty();
+    void * getfirst();
+
+    void setFirst(void *first);
+
 };
 
 

@@ -19,8 +19,8 @@ public: //Metodos con los que el usuario interactua
     void printData();
 
 private:
-    virtual void addNode(Node* nd, int data);
-    virtual void deleteNode(Node* nd, int data);
+    void addNode(Node* nd, int data);
+    void deleteNode(Node* nd, int data);
     void printList(Node* nd);
 
 };

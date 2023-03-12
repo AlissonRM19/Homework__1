@@ -1,11 +1,22 @@
 #include "../Headers/Collector.h"
 
-int* collectorList = (int *)malloc(50 * sizeof(int));
+Collector * Collector::instance = nullptr;
 
-void addNode(Node* nd, int data) {
 
+Collector *Collector::getinstance() {
+    if(instance == nullptr) instance = new Collector();
+    return instance;
 }
 
-void deleteNode(Node* nd, int data) {
-
+bool Collector::Empty() {
+    return first == nullptr;
 }
+
+void *Collector::getfirst() {
+    return first;
+}
+
+void Collector::setFirst(void *first) {
+    Collector::first = first;
+}
+

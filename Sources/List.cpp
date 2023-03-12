@@ -5,7 +5,7 @@ using namespace std;
  * Este metodo crea un nuevo nodo en para la lista
 */
 void List::addNode(Node* nd, int data) {
-    if (nd->next == NULL) {              //validacion
+    if (nd->next == NULL) {//validacion
         nd->next = new Node(data);       //agrega el nodo a la lista [deberia ser el metodo sobrecargado en vez de new]
     } else
         this->addNode(nd->next, data);
@@ -16,7 +16,7 @@ void List::addNode(Node* nd, int data) {
 */
 void List::deleteNode(Node* nd, int data) {
 
-    if (nd == nullptr) {return;}
+    if (nd == nullptr) return;
 
     if (nd->data == data && nd == this->head) {
         Node* temp = this->head;
