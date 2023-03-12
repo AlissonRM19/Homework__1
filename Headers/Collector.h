@@ -1,13 +1,15 @@
-//
-// Created by alissonrm on 09/03/23.
-//
-
 #ifndef HOMEWORK__1_COLLECTOR_H
 #define HOMEWORK__1_COLLECTOR_H
 
 
-class Collector {
+#include "Node.h"
+#include "List.h"
 
+class Collector : public List {
+
+public:
+    void addNode(Node* nd, int data) override;
+    void deleteNode(Node* nd, int data) override;
 };
 
 

@@ -16,14 +16,14 @@ public:
 
     Node(int data){ //Constructor
         this->data = data;
-        this->next = NULL; //nullpointer
+        this->next = nullptr; //nullpointer
     }
 
     //Metodos de "get" y "set" de la clase
     int getData() const;
     void setData(int data);
     Node *getNext() const;
-    void setNext(Node *next);
+    void setNext(Node* next);
 
 };
 

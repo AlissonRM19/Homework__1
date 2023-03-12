@@ -1,6 +1,7 @@
 #ifndef HOMEWORK__1_LIST_H
 #define HOMEWORK__1_LIST_H
 
+
 #include<iostream>
 #include "Node.h"
 
@@ -10,14 +11,19 @@
 class List{ //Clase
 
 public: //Metodos con los que el usuario interactua
+
     Node* head;
+
     void addData(int data);
+    void deleteData(int data);
     void printData();
 
-private: // Metodos con los que el usuario NO interactua, ya que estos corren por debajo
-    void addNode(Node* n, int data);
-    void printList(Node* n);
+private:
+    virtual void addNode(Node* nd, int data);
+    virtual void deleteNode(Node* nd, int data);
+    void printList(Node* nd);
 
 };
+
 
 #endif //HOMEWORK__1_LIST_H
