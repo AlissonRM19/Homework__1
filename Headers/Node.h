@@ -4,33 +4,32 @@
 #include<iostream>
 #include "Collector.h"
 
-/*
- * Este header contiene la clase Node, el constructor de la misma, ademas declara los metodos de
- * modificacion y consulta que se construiran en el ".cpp" correspondiente...
-*/
-class Node { //Clase
+/**
+ * @class Node
+ * @authors: Alisson Redondo Moya y Byron Mata Fuentes.
+ *
+ * @brief Clase que contiene un valor de tipo 'int' y un puntero al siguiente, asi como los metodos para consultar y
+ *        modificar estos datos [Getter y Setter]. Ademas de la sobrecarga de los metodos 'new()' y 'delete()'.
+ */
+class Node {
 
-public:
+    /**
+     * Declaracion del valor tipo 'int', puntero y los metodos de la clase Node
+     */
+    public:
 
-    int data;
-    Node* next;
+    int data;       // Valor tipo 'int'
+    Node* next;     // Puntero al siguiente
 
-    Node(int data){ //Constructor
-        this->data = data;
-        this->next = nullptr; //nullpointer
-    }
+    Node(int data);
+    void* operator new (size_t size);
+    void operator delete (void* oldNode);
 
-    //Metodos de "get" y "set" de la clase
+
     int getData() const;
     void setData(int data);
-    Node *getNext() const;
+    Node* getNext() const;
     void setNext(Node* next);
-
-    void * operator new (size_t size, int data);
-
-    void operator delete (void * viejoNodo);
-
-
 
 };
 

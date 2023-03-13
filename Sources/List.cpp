@@ -1,26 +1,40 @@
 #include "../Headers/List.h"
+
 using namespace std;
 
-/*
- * Este metodo crea un nuevo nodo en para la lista
-*/
+/**
+ * @brief Metodo 'addNode()', este valida el siguiente sea nulo, de ser asi crea un nodo nuevo,
+ *        sino se llama a si mismo de forma recursiva.
+ * @param nd
+ * @param data
+ */
 void List::addNode(Node* nd, int data) {
-    if (nd->next == NULL) {//validacion
-        nd->next = new Node(data);       //agrega el nodo a la lista [deberia ser el metodo sobrecargado en vez de new]
+
+    if (nd->next == nullptr) {
+        nd->next = new Node(data);
     } else
-        this->addNode(nd->next, data);
+        this->addNode(nd->next, data); // Se realiza una llamada recursiva al mismo metodo.
 }
 
-/*
- *
-*/
+/**
+ * @brief Metodo 'deleteNode()', este realiza tres validacion para determinar la eliminacion de
+ *        los elementos de la lista.
+ * @param nd
+ * @param data
+ */
 void List::deleteNode(Node* nd, int data) {
 
+    /* Valida si el elemento es nulo. */
     if (nd == nullptr) return;
 
+    /* Valida si el dato en el elemento es igual al que se quiere eliminar
+     * y si el elemento es igual a la posicion de head. */
     if (nd->data == data && nd == this->head) {
         Node* temp = this->head;
-        if (this->head->next != nullptr){
+
+        /* Valida si el siguiente de head es distinto de nulo, de ser asi
+         * asigna este como el nuevo head y elimina el temporal. */
+        if (this->head->next != nullptr) {
             this->head = this->head->next;
             delete temp;
         } else
@@ -28,47 +42,58 @@ void List::deleteNode(Node* nd, int data) {
         return;
     }
 
+    /* Valida si el siguiente al elemento es diferente de nulo
+     * y el dato del siguiente al elemento es igual al que se esta buscando. */
     if (nd->next != nullptr && nd->next->data == data) {
         Node* temp = nd->next;
+
+        /* Valida que el siguiente al elemento sea diferente de nulo, de ser asi
+         * se asigna que el siguiente al elemento sea el siguiente al siguiente del elemento*/
         if (nd->next != nullptr) {
             nd->next = nd->next->next;
         }
-        delete temp;
+        delete temp;                            // Se elimina el temporal.
     } else
-        this->deleteNode(nd->next, data);
+        this->deleteNode(nd->next, data);   // Se realiza una llamada recursiva al mismo metodo.
 }
 
-/*
- * Este metodo imprime los "nodos de la lista"
-*/
-void List::printList(Node* nd) {
-    if (nd != nullptr) {
-        cout<<"--> "<<nd->data<<endl;
-        this->printList(nd->next);
-    }
-}
 
-/*
- * Este metodo agrega el valor dado a un al nodo
-*/
+/**
+ * @brief Metodo 'addData()', este valida que head sea nulo, de ser asi crea un nodo nuevo,
+ *        sino entonces referencia el metodo 'addNode()'.
+ * @param data
+ */
 void List::addData(int data) {
-    if (this->head == nullptr) {            //validacion
-        this->head = new Node(data);       //agrega el valor dado al nodo
+    if (this->head == nullptr) {
+        this->head = new Node(data);
     } else
         this->addNode(this->head, data);
 }
 
-/*
- *
-*/
+/**
+ * @brief Metodo 'deleteData()', este hace referencia al metodo 'deleteNode()'.
+ * @param data
+ */
 void List::deleteData(int data) {
     this->deleteNode(this->head, data);
 }
 
-/*
- * Este metodo imprime los nodos de la lista
-*/
+
+/**
+ * @brief Metodo 'printList()', este metodo imprime los elementos de la lista validando que estos sean distintos
+ *        de nulo.
+ * @param nd
+ */
+void List::printList(Node* nd) {
+    if (nd != nullptr) {
+        cout << "--> " << nd->data << endl;
+        this->printList(nd->next);
+    }
+}
+
+/**
+ * @brief Metodo 'printData()', este hace referencia al metodo 'printList()'.
+ */
 void List::printData() {
-    cout<<"Imprimiendo: "<<endl;
     this->printList(this->head);
 }
